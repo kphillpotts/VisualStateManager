@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="VisualStateManagerDemo.RegistrationPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" BackgroundColor="#FEFEFE">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="ValidationStates">
+                            <VisualState x:Name="Valid">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="Green" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Invalid">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="LightCoral" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                        <VisualStateGroup x:Name="FocusedStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Focused">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="LightYellow" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="ValidationMessage" TargetType="Label">
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="FontAttributes" Value="Italic" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="ValidationStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="IsVisible" Value="False" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Valid">
+                                <VisualState.Setters>
+                                    <Setter Property="IsVisible" Value="False" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Invalid">
+                                <VisualState.Setters>
+                                    <Setter Property="IsVisible" Value="True" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="PasswordStrength" BasedOn="{StaticResource ValidationMessage}" TargetType="Label">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="Strength">
+                            <VisualState x:Name="Invalid">
+                                <VisualState.Setters>
+                                    <Setter Property="IsVisible" Value="True" />
+                                    <Setter Property="TextColor" Value="Red" />
+                                    <Setter Property="Text" Value="6 or more characters required" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Weak">
+                                <VisualState.Setters>
+                                    <Setter Property="IsVisible" Value="True" />
+                                    <Setter Property="TextColor" Value="Blue" />
+                                    <Setter Property="Text" Value="That's okay but bigger is better" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Strong">
+                                <VisualState.Setters>
+                                    <Setter Property="IsVisible" Value="True" />
+                                    <Setter Property="TextColor" Value="Green" />
+                                    <Setter Property="Text" Value="Well done, that's nice and strong!" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+
+            <Style x:Key="welcomeLabel" TargetType="Label" />
+
+            <Style x:Key="helpText" TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="End" />
+                <Setter Property="TextColor" Value="LightGray" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="FontAttributes" Value="Italic" />
+                <Setter Property="Margin" Value="0,20,0,0" />
+            </Style>
+
+            <Style x:Key="formLabelTitle" TargetType="Label">
+                <Setter Property="TextColor" Value="#333333" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Margin" Value="0,20,0,0" />
+            </Style>
+
+        </ResourceDictionary>
+
+
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackLayout Padding="50">
+                <Label FontAttributes="Italic" Text="Welcome" />
+                <Label FontAttributes="Bold" FontSize="Large" Text="Create your account" />
+                <BoxView Margin="0,10,0,0" BackgroundColor="CornflowerBlue" HeightRequest="5" HorizontalOptions="Start" WidthRequest="100" />
+
+                <Grid>
+                    <Label Style="{StaticResource formLabelTitle}" Text="Email" />
+                    <Label Style="{StaticResource helpText}" Text="All fields are mandatory" />
+                </Grid>
+                <Entry x:Name="Email" />
+                <Label x:Name="EmailMsg" Style="{StaticResource ValidationMessage}" Text="Valid Email address required" TextColor="Red" />
+
+
+                <Grid>
+                    <Label Style="{StaticResource formLabelTitle}" Text="Password" />
+                    <Label Style="{StaticResource helpText}" Text="six or more characters" />
+                </Grid>
+                <Entry x:Name="Password" IsPassword="True" />
+                <Label x:Name="PasswordMsg" Style="{StaticResource PasswordStrength}" Text="Weak" />
+
+                <Grid>
+                    <Label Style="{StaticResource formLabelTitle}" Text="Display Name" />
+                </Grid>
+                <Entry x:Name="UserName" />
+                <Label x:Name="UserNameMsg" Style="{StaticResource ValidationMessage}" Text="You have to enter a display name" TextColor="Red" />
+
+            </StackLayout>
+
+            <Button
+                x:Name="SubmitButton"
+                Grid.Row="1"
+                Margin="20"
+                BackgroundColor="CornflowerBlue"
+                HorizontalOptions="Fill"
+                Text="Create Your Account"
+                TextColor="White" />
+
+
+
+        </Grid>
+    </ScrollView>
+</ContentPage>
