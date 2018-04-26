@@ -104,9 +104,21 @@
                 <Setter Property="Margin" Value="0,20,0,0" />
             </Style>
 
+            <Style x:Key="submitButton" TargetType="Button">
+                <Setter Property="Margin" Value="20" />
+                <Setter Property="BackgroundColor" Value="CornflowerBlue" />
+                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+
+            <Style x:Key="sideBar" TargetType="BoxView">
+                <Setter Property="Margin" Value="0,10,0,0" />
+                <Setter Property="BackgroundColor" Value="CornflowerBlue" />
+                <Setter Property="HeightRequest" Value="5" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="WidthRequest" Value="100" />
+            </Style>
         </ResourceDictionary>
-
-
     </ContentPage.Resources>
 
     <ScrollView>
@@ -115,11 +127,15 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <StackLayout Padding="50">
+
+            <StackLayout Padding="30,40">
+
+                <!--  Header  -->
                 <Label FontAttributes="Italic" Text="Welcome" />
                 <Label FontAttributes="Bold" FontSize="Large" Text="Create your account" />
-                <BoxView Margin="0,10,0,0" BackgroundColor="CornflowerBlue" HeightRequest="5" HorizontalOptions="Start" WidthRequest="100" />
+                <BoxView Style="{StaticResource sideBar}" />
 
+                <!--  Email  -->
                 <Grid>
                     <Label Style="{StaticResource formLabelTitle}" Text="Email" />
                     <Label Style="{StaticResource helpText}" Text="All fields are mandatory" />
@@ -127,7 +143,7 @@
                 <Entry x:Name="Email" />
                 <Label x:Name="EmailMsg" Style="{StaticResource ValidationMessage}" Text="Valid Email address required" TextColor="Red" />
 
-
+                <!--  Password  -->
                 <Grid>
                     <Label Style="{StaticResource formLabelTitle}" Text="Password" />
                     <Label Style="{StaticResource helpText}" Text="six or more characters" />
@@ -135,6 +151,7 @@
                 <Entry x:Name="Password" IsPassword="True" />
                 <Label x:Name="PasswordMsg" Style="{StaticResource PasswordStrength}" Text="Weak" />
 
+                <!--  Display Name  -->
                 <Grid>
                     <Label Style="{StaticResource formLabelTitle}" Text="Display Name" />
                 </Grid>
@@ -143,14 +160,7 @@
 
             </StackLayout>
 
-            <Button
-                x:Name="SubmitButton"
-                Grid.Row="1"
-                Margin="20"
-                BackgroundColor="CornflowerBlue"
-                HorizontalOptions="Fill"
-                Text="Create Your Account"
-                TextColor="White" />
+            <Button x:Name="SubmitButton" Grid.Row="1" Style="{StaticResource submitButton}" Text="Create Your Account" />
 
 
 

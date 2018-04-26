@@ -63,7 +63,13 @@
         <!--  this will only appear in Landscape  -->
         <ContentView x:Name="DetailsBoxView" BackgroundColor="#029BE5" Style="{StaticResource DetailsBox}" WidthRequest="300">
             <StackLayout Grid.Column="1" Margin="20" Spacing="10">
-                <Label x:Name="HeaderText" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Start" Text="Xamarin Monkey" TextColor="White" />
+                <Label
+                    x:Name="HeaderText"
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    HorizontalOptions="Start"
+                    Text="Xamarin Monkey"
+                    TextColor="White" />
                 <Label LineBreakMode="WordWrap" Text="This is the cute Xamarin Mascot. He is adorable, the kids love him." TextColor="White" />
                 <Label x:Name="AdditionalText" LineBreakMode="WordWrap" Style="{StaticResource AdditionalInfo}" Text="Here is some additional Information you can only see in landscape view" />
             </StackLayout>

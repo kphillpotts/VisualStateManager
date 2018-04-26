@@ -1,12 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage x:Class="VisualStateManagerDemo.MainPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:VisualStateManagerDemo"
-             BackgroundColor="White">
+<ContentPage
+    x:Class="VisualStateManagerDemo.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:VisualStateManagerDemo"
+    BackgroundColor="White">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="NavButton" TargetType="Button">
+                <Setter Property="Margin" Value="20,0" />
+                <Setter Property="BackgroundColor" Value="CornflowerBlue" />
+                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <StackLayout Margin="30" Spacing="20" VerticalOptions="Start">
-        <Label Text="Xamarin.Forms 3.0" FontSize="30"  HorizontalOptions="Center" TextColor="Black"/>
-        <Label Text="Visual State Manager" FontSize="Medium"  HorizontalOptions="Center" TextColor="Black"/>
-        <Button x:Name="Validation" BackgroundColor="CornflowerBlue" HorizontalOptions="Fill" Text="Validation Sample" TextColor="White" Margin="20,0"/>
-        <Button x:Name="Orientation" BackgroundColor="CornflowerBlue" HorizontalOptions="Fill" Text="Orientation Sample" TextColor="White" Margin="20,0"/>
+        <Label FontSize="30" HorizontalOptions="Center" Text="Xamarin.Forms 3.0" TextColor="Black" />
+        <Label FontSize="Medium" HorizontalOptions="Center" Text="Visual State Manager" TextColor="Black" />
+        <Button x:Name="Validation" Style="{StaticResource NavButton}" Text="Validation Sample" />
+        <Button x:Name="Orientation" Style="{StaticResource NavButton}" Text="Orientation Sample" />
     </StackLayout>
 
 </ContentPage>

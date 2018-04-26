@@ -67,7 +67,7 @@ namespace VisualStateManagerDemo
 
         private bool CheckPasswordValid()
         {
-            var pwdLength = (Password.Text == null) ? 0 : Password.Text.Length;
+            var pwdLength = (Password.Text ?? "").Length;
 
             // check overall validity
             bool isValid = pwdLength >= 6;
