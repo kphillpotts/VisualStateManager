@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VisualStateManagerDemo.ViewModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace VisualStateManagerDemo
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class RegistrationPage : ContentPage
 	{
 		public RegistrationPage()
@@ -37,7 +30,6 @@ namespace VisualStateManagerDemo
 
             return emailValid && passwordValid && userDetailsValid;
         }
-
 
         private void Password_TextChanged(object sender, TextChangedEventArgs e)
         {

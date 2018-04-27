@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="VisualStateManagerDemo.CommonStatesPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <StackLayout Padding="20">
+        <Label Text="Normal Entry" />
+        <Entry IsEnabled="{Binding Source={x:Reference EntryEnabled}, Path=IsToggled}" />
+        <Label Margin="0,20,0,0" Text="Entry with VSM" />
+        <Entry IsEnabled="{Binding Source={x:Reference EntryEnabled}, Path=IsToggled}">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="LightGreen" />
+                        </VisualState.Setters>
+                    </VisualState>
+
+                    <VisualState x:Name="Focused">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="LightYellow" />
+                            <Setter Property="FontSize" Value="30" />
+                        </VisualState.Setters>
+                    </VisualState>
+
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="LightBlue" />
+                            <Setter Property="TextColor" Value="White" />
+                        </VisualState.Setters>
+                    </VisualState>
+
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Entry>
+
+        <StackLayout Padding="0,20" Orientation="Horizontal">
+            <Switch x:Name="EntryEnabled" IsToggled="True" />
+            <Label Text="Toggle Enabled Property" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

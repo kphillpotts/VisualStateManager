@@ -1,29 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace VisualStateManagerDemo
 {
-	public partial class MainPage : ContentPage
+    public partial class MainPage : ContentPage
 	{
 		public MainPage()
 		{
 			InitializeComponent();
-            Validation.Clicked += Validation_Clicked;
-            Orientation.Clicked += Orientation_Clicked;
+
+            CommonStatesButton.Clicked += CommonStatesButton_Clicked;
+            ValidationButton.Clicked += ValidationButton_Clicked;
+            OrientationButton.Clicked += OrientationButton_Clicked;
 		}
 
-        private void Orientation_Clicked(object sender, EventArgs e)
+        private void CommonStatesButton_Clicked(object sender, EventArgs e)
         {
-            this.Navigation.PushAsync(new OrientationPage());
+            Navigation.PushAsync(new CommonStatesPage());
+        }
+        private void OrientationButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new OrientationPage());
         }
 
-        private void Validation_Clicked(object sender, EventArgs e)
+        private void ValidationButton_Clicked(object sender, EventArgs e)
         {
-            this.Navigation.PushAsync(new RegistrationPage());
+            Navigation.PushAsync(new RegistrationPage());
         }
     }
 }
