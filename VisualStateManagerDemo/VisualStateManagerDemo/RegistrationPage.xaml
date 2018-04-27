@@ -52,6 +52,7 @@
                         <VisualState x:Name="Invalid">
                             <VisualState.Setters>
                                 <Setter Property="IsVisible" Value="True" />
+                                <Setter Property="TextColor" Value="Red" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -141,14 +142,14 @@
                     <Label Style="{StaticResource formHelpText}" Text="All fields are mandatory" />
                 </Grid>
                 <Entry x:Name="UserName" />
-                <Label x:Name="UserNameMsg" Style="{StaticResource ValidationMessage}" Text="You have to enter a display name" TextColor="Red" />
+                <Label x:Name="UserNameMsg" Style="{StaticResource ValidationMessage}" Text="You have to enter a display name" />
 
                 <!--  Email  -->
                 <Grid>
                     <Label Style="{StaticResource formLabelTitle}" Text="Email" />
                 </Grid>
                 <Entry x:Name="Email" />
-                <Label x:Name="EmailMsg" Style="{StaticResource ValidationMessage}" Text="Valid Email address required" TextColor="Red" />
+                <Label x:Name="EmailMsg" Style="{StaticResource ValidationMessage}" Text="Valid Email address required"  />
 
                 <!--  Password  -->
                 <Grid>
@@ -156,7 +157,7 @@
                     <Label Style="{StaticResource formHelpText}" Text="six or more characters" />
                 </Grid>
                 <Entry x:Name="Password" IsPassword="True" />
-                <Label x:Name="PasswordMsg" Style="{StaticResource PasswordStrength}" Text="Weak" />
+                <Label x:Name="PasswordMsg" Style="{StaticResource PasswordStrength}" Text="Password must be 6 characters or more" />
 
             </StackLayout>
 

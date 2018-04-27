@@ -4,6 +4,7 @@
     <StackLayout Padding="20">
         <Label Text="Normal Entry" />
         <Entry IsEnabled="{Binding Source={x:Reference EntryEnabled}, Path=IsToggled}" />
+        
         <Label Margin="0,20,0,0" Text="Entry with VSM" />
         <Entry IsEnabled="{Binding Source={x:Reference EntryEnabled}, Path=IsToggled}">
             <VisualStateManager.VisualStateGroups>

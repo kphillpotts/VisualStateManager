@@ -24,9 +24,9 @@ namespace VisualStateManagerDemo
 
         bool IsValid()
         {
+            var userDetailsValid = CheckUserDetailsValid();
             var emailValid = CheckEmailValid();
             var passwordValid = CheckPasswordValid();
-            var userDetailsValid = CheckUserDetailsValid();
 
             return emailValid && passwordValid && userDetailsValid;
         }
@@ -46,6 +46,18 @@ namespace VisualStateManagerDemo
             CheckEmailValid();
         }
 
+        private bool CheckUserDetailsValid()
+        {
+            var isValid = (UserName.Text ?? "").Length > 0;
+
+            // Set Visual State
+            var state = isValid ? "Valid" : "Invalid";
+            VisualStateManager.GoToState(UserName, state);
+            VisualStateManager.GoToState(UserNameMsg, state);
+
+            return isValid;
+        }
+
         private bool CheckEmailValid()
         {
             bool isValid = IsValidEmail(Email.Text);
@@ -53,39 +65,6 @@ namespace VisualStateManagerDemo
             var state = isValid ? "Valid" : "Invalid";
             VisualStateManager.GoToState(Email, state);
             VisualStateManager.GoToState(EmailMsg, state);
-
-            return isValid;
-        }
-
-        private bool CheckPasswordValid()
-        {
-            var pwdLength = (Password.Text ?? "").Length;
-
-            // check overall validity
-            bool isValid = pwdLength >= 6;
-            string validityState = isValid ? "Valid" : "Invalid";
-
-            // check strength
-            string strengthState = "Invalid";
-            if (pwdLength >= 10)
-                strengthState = "Strong";
-            else if (pwdLength >= 6)
-                strengthState = "Weak";
-
-            VisualStateManager.GoToState(Password, validityState);
-            VisualStateManager.GoToState(PasswordMsg, strengthState);
-
-            return isValid;
-        }
-
-        private bool CheckUserDetailsValid()
-        {
-            var isValid = (UserName.Text ?? "").Length > 0;
-
-            var state = isValid ? "Valid" : "Invalid";
-
-            VisualStateManager.GoToState(UserName, state);
-            VisualStateManager.GoToState(UserNameMsg, state);
 
             return isValid;
         }
@@ -101,6 +80,29 @@ namespace VisualStateManagerDemo
             {
                 return false;
             }
+        }
+
+        private bool CheckPasswordValid()
+        {
+            var pwdLength = (Password.Text ?? "").Length;
+
+            // check overall validity
+            bool isValid = pwdLength >= 6;
+
+            // Set Visual State
+            string validityState = isValid ? "Valid" : "Invalid";
+
+            // check strength
+            string strengthState = "Invalid";
+            if (pwdLength >= 10)
+                strengthState = "Strong";
+            else if (pwdLength >= 6)
+                strengthState = "Weak";
+
+            VisualStateManager.GoToState(Password, validityState);
+            VisualStateManager.GoToState(PasswordMsg, strengthState);
+
+            return isValid;
         }
     }
 }

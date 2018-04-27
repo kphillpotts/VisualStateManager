@@ -10,14 +10,12 @@
                             <VisualState.Setters>
                                 <Setter Property="Grid.Row" Value="1" />
                                 <Setter Property="Grid.Column" Value="0" />
-                                <Setter Property="IsVisible" Value="True" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="Landscape">
                             <VisualState.Setters>
                                 <Setter Property="Grid.Row" Value="0" />
                                 <Setter Property="Grid.Column" Value="1" />
-                                <Setter Property="IsVisible" Value="True" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -58,7 +56,7 @@
 
         <Image Source="Monkey.png" />
 
-        <!--  this will only appear in Landscape  -->
+        <!--  this will change grid position based on orientation  -->
         <ContentView x:Name="DetailsBoxView" BackgroundColor="#029BE5" Style="{StaticResource DetailsBox}" WidthRequest="250">
             <StackLayout Grid.Column="1" Margin="20" Spacing="10">
                 <Label
@@ -69,6 +67,8 @@
                     Text="Xamarin Monkey"
                     TextColor="White" />
                 <Label LineBreakMode="WordWrap" Text="This is the cute Xamarin Mascot. He is adorable, the kids love him." TextColor="White" />
+                
+                <!-- this will change visibility based on orientation -->
                 <Label x:Name="AdditionalText" LineBreakMode="WordWrap" Style="{StaticResource AdditionalInfo}" Text="Here is some additional Information you can only see in landscape view" />
             </StackLayout>
         </ContentView>
